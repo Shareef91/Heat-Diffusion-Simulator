@@ -1,11 +1,9 @@
 # Ignore generated CSV output files from simulations
 *.csv
+.exe
+.obj
 
-# Common build artifacts
-*.exe
-*.obj
-
-# Editor/workspace
+# Editor/workspace files
 .vscode/
 Thumbs.db
 .DS_Store
