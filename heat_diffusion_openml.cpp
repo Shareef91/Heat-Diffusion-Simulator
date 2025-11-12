@@ -2,6 +2,7 @@
 #include <vector>
 #include <iomanip>
 #include <omp.h>
+#include <fstream>
 
 const int N = 100;
 const int STEPS = 1000;
@@ -34,5 +35,18 @@ int main() {
 
     double end = omp_get_wtime();
     std::cout << "Runtime: " << end - start << " seconds\n";
+
+    // --- SAVE FINAL GRID TO CSV ---
+    std::ofstream out("heat_output_openmp.csv");
+    for (int i = 0; i < N; ++i) {
+        for (int j = 0; j < N; ++j) {
+            if (j) out << ",";
+            out << grid[i][j];
+        }
+        out << "\n";
+    }
+    out.close();
+    std::cout << "Saved heat_output_openmp.csv (OpenMP)\n";
     return 0;
 }
+
